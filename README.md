@@ -1,7 +1,4 @@
 Zf2Base
 =======
 
-CrudController
-Mail
-AbstractService
-AbstractUpload
+CrudController, Mail, AbstractService, AbstractUpload;
