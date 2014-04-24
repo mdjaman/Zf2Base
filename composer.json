@@ -1,0 +1,32 @@
+{
+    "name": "zf2-app/zf2-base",
+    "description": "Abstracts help class for zend 2",
+    "type": "library",
+    "keywords": ["crud","upload","mail","query","doctrine","zend"],
+    "homepage": "https://github.com/jhonmike/Zf2Base",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jhon Mike Soares",
+            "email": "jhonmike@hotmail.com.br",
+            "homepage": "www.jhonmike.com.br",
+            "role": "Developer"
+        },
+        {
+            "name": "Euclécio Josias Rodrigues",
+            "email": "eucjosias.64encode@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "zendframework/zendframework": "2.3.*",
+        "doctrine/doctrine-orm-module": "0.*",
+        "imagine/imagine": "~0.5.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Zf2Base": "src"
+        }
+    }
+}
