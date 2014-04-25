@@ -6,15 +6,8 @@ CrudController, Mail, AbstractService, AbstractUpload;
 Installation
 ------------
 
-	php composer.phar require zf2-app/zf2-base
+Installation of Zf2Base uses composer. For composer documentation, please refer to getcomposer.org.
 
-OR
+	php composer.phar require zf2-app/zf2-base:dev-master
 
-	{
-	    "require": {
-	        "zf2-app/zf2-base": "dev-master"
-	    }
-	}
-
-
-	php composer.phar install
+Then add Zf2Base to your config/application.config.php
