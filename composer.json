@@ -28,5 +28,10 @@
         "psr-0": {
             "Zf2Base": "src"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1",
+        }
     }
 }
