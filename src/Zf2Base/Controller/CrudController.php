@@ -25,7 +25,6 @@ abstract class CrudController extends AbstractActionController
     protected $route;
     protected $controller;
     
-    
     public function indexAction() 
     {
         $list = $this->getEm()
@@ -62,7 +61,7 @@ abstract class CrudController extends AbstractActionController
             $entity = $repository->find($this->params()->fromRoute('id',0));
             
             // popula o form
-            $form->setData($entity);
+            $form->setData($entity->toArray());
         }
         
         // verifica se ahh post
@@ -76,7 +75,7 @@ abstract class CrudController extends AbstractActionController
                 try {
                     $id = $this->params()->fromRoute('id',$request->getPost('id', 0));
                     $service = $this->getServiceLocator()->get($this->service);
-                    if ($service->persist($request->getPost(), $id))
+                    if ($service->persist($request->getPost()->toArray(), $id))
                         $this->flashMessenger()->addMessage('Salvo com sucesso!');
 
                 } catch (\Exception $e) {
