@@ -11,11 +11,6 @@
             "email": "jhonmike@hotmail.com.br",
             "homepage": "http://www.jhonmike.com.br",
             "role": "Developer"
-        },
-        {
-            "name": "Euclécio Josias Rodrigues",
-            "email": "eucjosias.64encode@gmail.com",
-            "role": "Developer"
         }
     ],
     "require": {
