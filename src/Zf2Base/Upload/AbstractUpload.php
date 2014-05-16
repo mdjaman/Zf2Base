@@ -3,9 +3,9 @@
 /**
 * Class AbstractService
 *
-* @author Jhon Mike Soares <jhonmike@hotmail.com.br>
+* @author Jhon Mike Soares <https://github.com/jhonmike>
 * @version 1.0
-* 
+*
 * Dependencia Imagine (https://github.com/avalanche123/Imagine.git)
 */
 
@@ -44,7 +44,7 @@ class AbstractUpload
             mkdir($temp_directory, 0777, true);
             chmod($temp_directory, 0777);
         }
-        return $this->upload();            
+        return $this->upload();
     }
 
     protected function upload()
@@ -75,7 +75,7 @@ class AbstractUpload
                 $mime_type = explode("/", $files['type']);
 
                 if($mime_type[0]=="image"){
-                    
+
                     $tamanhoImagem = getimagesize($this->getDestination($files['name']));
 
                     $largura_img = $tamanhoImagem[0];
@@ -90,7 +90,7 @@ class AbstractUpload
                         $image->resize(new Box(1920, $altura_img_nova));
                     }
                     $image->save($this->options['directory'] . $name . "." . $ext);
-                    
+
                     $this->options['ext'] = $ext;
                     $this->thumbnail($name);
                 } else {

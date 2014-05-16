@@ -2,9 +2,9 @@
 /**
 * Class CrudController
 *
-* @author Jhon Mike Soares <jhonmike@hotmail.com.br>
+* @author Jhon Mike Soares <https://github.com/jhonmike>
 * @version 1.0
-* 
+*
 * Dependencia Doctrine (https://github.com/doctrine/DoctrineORMModule.git
 */
 
@@ -24,15 +24,15 @@ abstract class CrudController extends AbstractActionController
     protected $form;
     protected $route;
     protected $controller;
-    
-    public function indexAction() 
+
+    public function indexAction()
     {
         $list = $this->getEm()
                      ->getRepository($this->entity)
                      ->findAll();
-        
+
         $page = $this->params()->fromRoute('page');
-        
+
         $paginator = new Paginator(new ArrayAdapter($list));
         $paginator->setCurrentPageNumber($page)
                   ->setDefaultItemCountPerPage(20);
@@ -43,7 +43,7 @@ abstract class CrudController extends AbstractActionController
             'flashMessages' => $this->flashMessenger()->getMessages()
         ));
     }
-    
+
     public function registerAction()
     {
         // pega o ID
@@ -53,17 +53,17 @@ abstract class CrudController extends AbstractActionController
         $form = new $this->form('', array('id' => $id, 'em' => $this->getEm()));
         // request posts
         $request = $this->getRequest();
-        
+
         // se ID existir da um setData para popular o formulario
         if($id) {
             // com o id efetuar uma busca no banco de dados para popular o form
             $repository = $this->getEm()->getRepository($this->entity);
             $entity = $repository->find($this->params()->fromRoute('id',0));
-            
+
             // popula o form
             $form->setData($entity->toArray());
         }
-        
+
         // verifica se ahh post
         if($request->isPost())
         {
@@ -81,17 +81,17 @@ abstract class CrudController extends AbstractActionController
                 } catch (\Exception $e) {
                     $this->flashMessenger()->addMessage('Falha ao salvar!');
                 }
-                
+
                 return $this->redirect()->toRoute($this->route,array('controller'=>$this->controller));
             }
         }
-        
+
         return new ViewModel(array(
-            'form' => $form, 
+            'form' => $form,
             'id' => $id
         ));
     }
-    
+
     public function deleteAction()
     {
         try {
@@ -104,16 +104,16 @@ abstract class CrudController extends AbstractActionController
         }
         return $this->redirect()->toRoute($this->route,array('controller'=>$this->controller));
     }
-    
+
     /**
-     * 
+     *
      * @return EntityManager
      */
     protected function getEm()
     {
         if(null === $this->em)
             $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        
+
         return $this->em;
     }
 }
