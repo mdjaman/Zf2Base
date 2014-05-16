@@ -1,5 +1,5 @@
 {
-    "name": "zf2-app/zf2-base",
+    "name": "2ends/zf2-base",
     "description": "Abstracts help class for zend 2",
     "type": "library",
     "keywords": ["crud","upload","mail","query","doctrine","zend"],
