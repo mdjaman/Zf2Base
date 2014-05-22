@@ -8,6 +8,6 @@ Installation
 
 Installation of Zf2Base uses composer. For composer documentation, please refer to getcomposer.org.
 
-	php composer.phar require 2ends/zf2-base:0.0.1
+	php composer.phar require 2ends/zf2-base:dev-master
 
 Then add Zf2Base to your config/application.config.php
