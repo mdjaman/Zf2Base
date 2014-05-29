@@ -4,16 +4,16 @@
 *
 * @author Euclécio Josias Rodrigues <eucjosias.64encode@gmail.com>
 * @version 3.0
-* 
-* Necessidade do ḿódulo Doctrine 2 para Zend Framework 2
+*
+* Necessidade do módulo Doctrine 2 para Zend Framework 2
 * Depende do uso das classes com namespaces Doctrine\ORM\EntityRepository e Doctrine\ORM\EntityManager do módulo do Doctrine 2
 *
-* Classe padrão para uso de pesquisas usando DQL (Doctrine Query Language) 
+* Classe padrão para uso de pesquisas usando DQL (Doctrine Query Language)
 * Desenvolvida na necessidade de uma classe ao qual fossem criadas funções abstratas e reutilizáveis em determinados tipos de busca
 * Pode ser usada para comparadção de buscas com determinado parâmetro, para ordenação de resultados, restrição de valores, limitação de resultados
 *
 */
-namespace K13Base\Entity;
+namespace Zf2Base\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;
@@ -63,7 +63,7 @@ Class QueryRepository extends EntityRepository
     * Adicionas as Entidades com LeftJoin
     * @param $entity -> Entidade que será juntada no LeftJoin
     * @param $type -> Tipo da restrição da junção (WITH, ON)
-    * @param $onOptions = array('fieldEntity' => array('entityForegein' => 'Namespace\Entity\Foreign', 'fieldForeign' => 'field')) 
+    * @param $onOptions = array('fieldEntity' => array('entityForegein' => 'Namespace\Entity\Foreign', 'fieldForeign' => 'field'))
     *   Definição das keys:
     *   - fieldEntity -> Atributo da entidade que será restringido comparando com o fieldForeign da entityForegein
     *   - entityForegein -> Entidade que ter[a um atributo de comparação na restrição
@@ -194,7 +194,7 @@ Class QueryRepository extends EntityRepository
     *
     *   A restrição ficará:
     *
-    *   "WHERE (entity.usuario LIKE '%joao%' OR entity.email LIKE '%joao%' OR leftjoin.nome LIKE '%joao%' OR leftjoin.nome telefone '%joao%') 
+    *   "WHERE (entity.usuario LIKE '%joao%' OR entity.email LIKE '%joao%' OR leftjoin.nome LIKE '%joao%' OR leftjoin.nome telefone '%joao%')
     *       AND (entity.usuario LIKE '%mail@mail.com%' OR entity.email LIKE '%mail@mail.com%' OR leftjoin.nome LIKE '%mail@mail.com%' OR leftjoin.telefone LIKE '%mail@mail.com%')"
     *
     * @return QueryRepository

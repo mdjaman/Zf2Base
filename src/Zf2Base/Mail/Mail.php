@@ -9,14 +9,12 @@
 
 namespace Zf2Base\Mail;
 
-use Zend\Mail\Transport\Smtp as SmtpTransport;
-use Zend\Mail\Message;
-
-use Zend\View\Model\ViewModel;
-
-use Zend\Mime\Message as MimeMessage;
-use Zend\Mime\Part as MimePart;
-use Zend\Mime\Mime;
+use Zend\Mail\Transport\Smtp as SmtpTransport,
+    Zend\Mail\Message,
+    Zend\View\Model\ViewModel,
+    Zend\Mime\Message as MimeMessage,
+    Zend\Mime\Part as MimePart,
+    Zend\Mime\Mime;
 
 class Mail
 {
@@ -57,9 +55,9 @@ class Mail
     public function renderView($page, array $data)
     {
         $model = new ViewModel;
-        $model->setTemplate("mailer/{$page}.phtml");
-        $model->setOption('has_parent',true);
-        $model->setVariables($data);
+        $model->setTemplate("mailer/{$page}.phtml")
+            ->setOption('has_parent',true)
+            ->setVariables($data);
 
         return $this->view->render($model);
     }
@@ -76,9 +74,9 @@ class Mail
 
         $this->message = new Message;
         $this->message->addFrom($config['connection_config']['from'])
-                ->addTo($this->to)
-                ->setSubject($this->subject)
-                ->setBody($this->body);
+            ->addTo($this->to)
+            ->setSubject($this->subject)
+            ->setBody($this->body);
 
         return $this;
     }

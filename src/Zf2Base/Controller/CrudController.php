@@ -11,9 +11,8 @@
 namespace Zf2Base\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
-    Zend\View\Model\ViewModel;
-
-use Zend\Paginator\Paginator,
+    Zend\View\Model\ViewModel,
+    Zend\Paginator\Paginator,
     Zend\Paginator\Adapter\ArrayAdapter;
 
 abstract class CrudController extends AbstractActionController
@@ -28,18 +27,33 @@ abstract class CrudController extends AbstractActionController
     public function indexAction()
     {
         $list = $this->getEm()
-                     ->getRepository($this->entity)
-                     ->findAll();
+            ->getRepository($this->entity)
+            ->findAll();
 
         $page = $this->params()->fromRoute('page');
 
         $paginator = new Paginator(new ArrayAdapter($list));
         $paginator->setCurrentPageNumber($page)
-                  ->setDefaultItemCountPerPage(20);
+            ->setDefaultItemCountPerPage(20);
 
         return new ViewModel(array(
             'data'=>$paginator,
             'page'=>$page,
+            'flashMessages' => $this->flashMessenger()->getMessages()
+        ));
+    }
+
+    public function getAction()
+    {
+        // pega o ID
+        $id = $this->params()->fromRoute('id',0);
+
+        $entity = $this->getEm()
+            ->getRepository($this->entity)
+            ->findOneById($id);
+
+        return new ViewModel(array(
+            'data'=>$entity,
             'flashMessages' => $this->flashMessenger()->getMessages()
         ));
     }
@@ -57,8 +71,9 @@ abstract class CrudController extends AbstractActionController
         // se ID existir da um setData para popular o formulario
         if($id) {
             // com o id efetuar uma busca no banco de dados para popular o form
-            $repository = $this->getEm()->getRepository($this->entity);
-            $entity = $repository->find($this->params()->fromRoute('id',0));
+            $entity = $this->getEm()
+                ->getRepository($this->entity)
+                ->findOneById($id);
 
             // popula o form
             $form->setData($entity->toArray());

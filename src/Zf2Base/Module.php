@@ -5,11 +5,10 @@
 
 namespace Zf2Base;
 
-use Zend\Mvc\MvcEvent;
-use Zend\ModuleManager\ModuleManager;
-
-use Zend\Mail\Transport\Smtp as SmtpTransport;
-use Zend\Mail\Transport\SmtpOptions;
+use Zend\Mvc\MvcEvent,
+	Zend\ModuleManager\ModuleManager,
+	Zend\Mail\Transport\Smtp as SmtpTransport,
+	Zend\Mail\Transport\SmtpOptions;
 
 class Module
 {
